@@ -8,76 +8,104 @@ training pipeline without cloning large files into Git.
 These artifacts are early-stage research outputs. Treat them as experimental
 supporting material, not polished benchmark releases.
 
-## Recommended Public Links
+## Current Public Inventory (as of 2026-05-26)
+
+### Models
+
+#### FishingROV/yolov5s_scallop_mosaic_640
+
+- Link: https://huggingface.co/FishingROV/yolov5s_scallop_mosaic_640
+- File count: 3
+- Files:
+  - .gitattributes
+  - README.md
+  - yolov5s_scallop_mosaic_640_best.pt
+
+#### FishingROV/scallop_yolov5s_640_model
+
+- Link: https://huggingface.co/FishingROV/scallop_yolov5s_640_model
+- File count: 10
+- Files:
+  - .gitattributes
+  - best.onnx
+  - best.pt
+  - best.rknn
+  - best.torchscript
+  - best_rv1126b.rknn
+  - best_rv1126b_mmse.rknn
+  - best_split.onnx
+  - best_split_rv1126b.rknn
+  - calib.txt
+
+#### FishingROV/scallop_yolo26x_lr_1280_v2
+
+- Link: https://huggingface.co/FishingROV/scallop_yolo26x_lr_1280_v2
+- File count: 6
+- Files:
+  - .gitattributes
+  - README.md
+  - best.pt
+  - class_eval_best.json
+  - public_FishingROV_model_card_example.md
+  - results.csv
+
+#### FishingROV/classifier_swinv2b_256
+
+- Link: https://huggingface.co/FishingROV/classifier_swinv2b_256
+- File count: 7
+- Files:
+  - .gitattributes
+  - README.md
+  - best.pt
+  - class_eval_best.json
+  - classes.json
+  - history.json
+  - public_FishingROV_model_card_example.md
 
 ### Datasets
 
-- `FishingROV/scallop_lr_teacher_640`
-  - Link: https://huggingface.co/datasets/FishingROV/scallop_lr_teacher_640
-  - Purpose: left/right panel derivative of the public Zenodo scallop dataset.
-  - Usefulness: good candidate for external validation because it includes the
-    derived training structure directly, rather than only a compressed archive.
+#### FishingROV/scallop_mosaic_640_quantization_sample
 
-- `FishingROV/scallop_yolov5s_mosaic_640`
-  - Link: https://huggingface.co/datasets/FishingROV/scallop_yolov5s_mosaic_640
-  - Purpose: 640px one-class tiled/mosaic derivative for edge-model training.
-  - Usefulness: useful for reproducing the mosaic-data idea, though the current
-    upload is packaged as a `.tar.gz` archive rather than an expanded dataset.
+- Link: https://huggingface.co/datasets/FishingROV/scallop_mosaic_640_quantization_sample
+- File count: 2002
+- Split layout: train + val directories present
+- Top-level files:
+  - .gitattributes
+  - README.md
 
-- `FishingROV/scallop_yolov5s_mosaic_640_4class`
-  - Link: https://huggingface.co/datasets/FishingROV/scallop_yolov5s_mosaic_640_4class
-  - Purpose: four-class tiled/mosaic derivative used for taxonomic/condition
-    experiments.
-  - Usefulness: useful for validation of the four-class training setup, again as
-    an archive-style release.
+#### FishingROV/scallop_yolov5s_mosaic_640
 
-### Experimental Support Data
+- Link: https://huggingface.co/datasets/FishingROV/scallop_yolov5s_mosaic_640
+- File count: 3
+- Split layout: archive-style release (no expanded train/val directories)
+- Files:
+  - .gitattributes
+  - README.md
+  - scallop_yolov5s_mosaic_640.tar.gz
 
-- `FishingROV/scallop_mosaic_640_quantization_sample`
-  - Link: https://huggingface.co/datasets/FishingROV/scallop_mosaic_640_quantization_sample
-  - Purpose: calibration/quantization sample used for RKNN export work.
-  - Public-link recommendation: optional. It is real and public, but it is more
-    of a build-support artifact than a headline validation artifact.
+#### FishingROV/scallop_yolov5s_mosaic_640_4class
 
-## Model Artifacts
+- Link: https://huggingface.co/datasets/FishingROV/scallop_yolov5s_mosaic_640_4class
+- File count: 3
+- Split layout: archive-style release (no expanded train/val directories)
+- Files:
+  - .gitattributes
+  - README.md
+  - scallop_yolov5s_mosaic_640_4class.tar.gz
 
-- `FishingROV/yolov5s_scallop_mosaic_640`
-  - Link: https://huggingface.co/FishingROV/yolov5s_scallop_mosaic_640
-  - Status: publicly visible and has a basic model card.
-  - Recommendation: acceptable to link as an experimental weight release, but it
-    should be described as preliminary and its reported metrics should be checked
-    against the current project summary before it becomes a front-page proof
-    point.
+#### FishingROV/scallop_lr_teacher_640
 
-- `FishingROV/scallop_yolov5s_640_model`
-  - Link: https://huggingface.co/FishingROV/scallop_yolov5s_640_model
-  - Status: publicly visible but not yet curated as a public reference artifact.
-  - Current issues: no useful model card, mixed file formats in one place,
-    unclear canonical file, and missing public-facing explanation.
-  - Recommendation: do not feature this from the GitHub README yet. Either clean
-    it into a versioned model repo or leave it as an internal convenience host.
+- Link: https://huggingface.co/datasets/FishingROV/scallop_lr_teacher_640
+- File count: 11482
+- Split layout: images/train + images/val directories present
+- Top-level files:
+  - .gitattributes
+  - README.md
+  - dataset.yaml
+  - pipeline_meta.json
 
-## Private / Internal Artifacts
+## Notes
 
-Some Hugging Face repositories are being used as private handoff or storage
-points between the server, travel laptop, and Aura deployment workflow.
-
-Those should remain private until they have:
-
-- a clean model or dataset card;
-- clear provenance and license text;
-- a stable intended file to download;
-- no operational-only runtime notes or private deployment assumptions.
-
-## Current Recommendation
-
-If the goal is to let someone validate the work at this early stage, link the
-public derivative datasets first. They show real transformation work and are the
-best starting point for reproduction.
-
-Link model weights more selectively:
-
-- okay to mention the public mosaic model as experimental;
-- avoid promoting mixed or passthrough storage repos until they are cleaned up;
-- keep private HF repos out of the public GitHub repo until they have been
-  turned into intentional public artifacts.
+- Inventory is pulled from the live Hugging Face API for author FishingROV.
+- Large expanded datasets are summarized by structure and top-level files for
+  readability.
