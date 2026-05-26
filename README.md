@@ -1,12 +1,12 @@
 # FishingROV
+Ultimate project goal is to see selective king scallop harvesting become an economic reality, offering an alternative to scallop dredge gear.
 
 Open-source experiments for detecting scallops in underwater video using public
 survey imagery, YOLO-style object detection, and low-cost edge deployment.
 
-The immediate goal is to make a small, reproducible project page that can be
-shared with researchers and data custodians while requesting access to additional
-NatureScot drop-camera / towed-video footage. The ROV edge-deployment work is
-for pipeline validation, experimentation, and future training-data collection.
+The immediate goal is to get more data, particularly images containing king scallops. Pseudo-label and retrain detectors.
+
+The ROV edge-deployment work is for pipeline validation, experimentation, and training-data collection, while building the platform for catch-mechanism testing and refining the real-time detection pipeline.
 
 ## Current Focus
 
@@ -18,6 +18,7 @@ for pipeline validation, experimentation, and future training-data collection.
 - Convert suitable exported models to Rockchip RKNN for low-cost ROV computers.
 - Build a practical pseudo-labelling workflow for additional unlabelled survey
   video, with human review of uncertain detections.
+- Deploy the ROV for data gathering, model refinement, and full 4K image processing.
 
 ## Public Dataset
 
