@@ -15,7 +15,7 @@ stock-assessment benchmark.
 | YOLOv5s 640 | Edge baseline | 640px letterboxed public-data derivative | Trained | mAP50: 0.841 on baseline validation split. |
 | YOLOv5s mosaic 640 | Edge mosaic detector | 640px tiled/mosaic public-data derivative | Trained | mAP50: 0.892 on one-class mosaic validation split. |
 | YOLOv5s mosaic 640, 4-class | Edge taxonomic/condition detector | 640px tiled/mosaic derivative with dead/recessed/queen/king labels | Trained and exported for artifact hosting | mAP50: 0.549 overall; queen class mAP50: 0.841; king class remains weak. |
-| YOLOv5s rectangular scout | Fast first-stage detector | 512x288 scout dataset | Trained and converted to RKNN | Used as the current lightweight scout candidate on Aura. |
+| YOLOv5s rectangular scout | Fast first-stage detector | 512x288 scout dataset | Trained and converted to RKNN | mAP50: 0.351; scallop-class mAP50: 0.506 (98 epochs, early stop at 68). Used as the current lightweight scout candidate on Aura. |
 | YOLO26x 1280 | High-capacity teacher | 1280px augmented public-data derivative | Short test run | 5 epochs reached mAP50: 0.797 and mAP50-95: 0.486. |
 | YOLO26x left/right 1280 | High-capacity teacher | 1280px left/right split panels | Full training run | Reached about mAP50: 0.654 and mAP50-95: 0.403. |
 
