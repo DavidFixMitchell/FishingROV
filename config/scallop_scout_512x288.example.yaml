@@ -1,0 +1,11 @@
+# Example YOLO dataset config for a rectangular scout dataset.
+# Update `path` to your local generated dataset root.
+
+path: /path/to/scallop_scout_512x288
+train: images/train
+val: images/val
+
+nc: 1
+names: ['scallop']
+
+# Fixed scout input: width=512, height=288

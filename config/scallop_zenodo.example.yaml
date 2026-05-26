@@ -1,0 +1,10 @@
+# Example YOLO dataset config for the public Zenodo scallop dataset.
+# Update `path` to your local converted dataset root.
+
+path: /path/to/scallop_zenodo
+train: images/train
+val: images/val
+test: images/test
+
+nc: 1
+names: ['scallop']

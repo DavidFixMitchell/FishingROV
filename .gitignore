@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Datasets and generated outputs
+datasets/
+runs/
+outputs/
+artifacts/
+logs/
+*.log
+reviews.json
+gitleaks-report.json
+
+# Model artifacts and binaries
+*.pt
+*.pth
+*.onnx
+*.rknn
+*.engine
+*.tflite
+*.torchscript
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.png
+*.jpg
+*.jpeg
+
+# Secrets and local machine files
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*_deploy*
+known_hosts
+.ssh/
+trip_extras/
+holiday_bundle/
+local/
+local_data/
+tmp/
+temp/
+scratch/
+.cache/
+
+# OS / editor
+.DS_Store
+.ds_store
+Thumbs.db
+.vscode/
+.idea/
