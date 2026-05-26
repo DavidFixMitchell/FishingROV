@@ -5,7 +5,8 @@ survey imagery, YOLO-style object detection, and low-cost edge deployment.
 
 The immediate goal is to make a small, reproducible project page that can be
 shared with researchers and data custodians while requesting access to additional
-NatureScot drop-camera / towed-video footage. ROV edge deplowment for pipeline validation and experamentation. Training data harvesting: raw binocular 1080p video, 1 second 4k frame gathering.
+NatureScot drop-camera / towed-video footage. The ROV edge-deployment work is
+for pipeline validation, experimentation, and future training-data collection.
 
 ## Current Focus
 
