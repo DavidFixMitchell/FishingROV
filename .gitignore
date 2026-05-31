@@ -48,6 +48,10 @@ id_ed25519*
 *_deploy*
 known_hosts
 .ssh/
+
+# Website (kept local / deployed separately, not in public Git)
+Web_Site/
+
 trip_extras/
 holiday_bundle/
 local/

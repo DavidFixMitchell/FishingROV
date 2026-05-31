@@ -8,9 +8,28 @@ training pipeline without cloning large files into Git.
 These artifacts are early-stage research outputs. Treat them as experimental
 supporting material, not polished benchmark releases.
 
-## Current Public Inventory (as of 2026-05-26)
+## Current Public Inventory (as of 2026-06-01)
 
 ### Models
+
+#### FishingROV/scallop_yolo26x_lr_1280_aug
+
+- Link: https://huggingface.co/FishingROV/scallop_yolo26x_lr_1280_aug
+- Role: 3090-side teacher detector (best honest L/R teacher; mAP50 0.705 held-out)
+- File count: 12
+- Files:
+  - .gitattributes
+  - README.md
+  - best.pt
+  - last.pt
+  - args.yaml
+  - results.csv
+  - results.png
+  - BoxPR_curve.png
+  - BoxF1_curve.png
+  - confusion_matrix_normalized.png
+  - val_batch0_pred.jpg
+  - val_batch0_labels.jpg
 
 #### FishingROV/yolov5s_scallop_mosaic_640
 
