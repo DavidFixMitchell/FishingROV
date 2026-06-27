@@ -3,7 +3,7 @@
   "description": "Reproducible video inference preset for YOLO 1cls + SwinV2 384 cascade",
   "paths": {
     "python": "python3",
-    "infer_script": "../../scripts/infer_cascade_yolo_swin_to_viame.py",
+    "infer_script": "scripts/infer_cascade_yolo_swin_to_viame.py",
     "dive_bin": "dive"
   },
   "weights": {
