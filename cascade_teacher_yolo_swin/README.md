@@ -130,6 +130,10 @@ Edit `config/mode_video_default.json`:
 - `weights.*.local`: local weight paths
 - `weights.*.hf_url`: remote weight URLs
 
+Public bundle default:
+- `paths.python` is set to `python3` so the folder stays portable.
+- If your system `python3` does not have the cascade dependencies, point `paths.python` at your own venv or interpreter.
+
 ## Hardware configuration and tuning
 
 All hardware tuning is done in `config/mode_video_default.json` under `runtime` and `video`.

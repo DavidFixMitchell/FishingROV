@@ -18,6 +18,8 @@ def _resolve(bundle_root: Path, value: str) -> Path:
     p = Path(value)
     if p.is_absolute():
         return p
+    if p.parent == Path('.') and shutil.which(value):
+        return Path(shutil.which(value) or value)
     return (bundle_root / p).resolve()
 
 
