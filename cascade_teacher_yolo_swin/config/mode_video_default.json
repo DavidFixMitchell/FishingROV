@@ -1,0 +1,39 @@
+{
+  "name": "cascade_teacher_yolo_swin_video_default",
+  "description": "Reproducible video inference preset for YOLO 1cls + SwinV2 384 cascade",
+  "paths": {
+    "python": "python3",
+    "infer_script": "../../scripts/infer_cascade_yolo_swin_to_viame.py",
+    "dive_bin": "dive"
+  },
+  "weights": {
+    "yolo": {
+      "local": "weights/chungus_1cls_best.pt",
+      "hf_url": "https://huggingface.co/FishingROV/cascade_teacher_yolo_swin/resolve/main/weights/chungus_1cls_best.pt"
+    },
+    "swin": {
+      "local": "weights/swinv2_384_best.pt",
+      "hf_url": "https://huggingface.co/FishingROV/cascade_teacher_yolo_swin/resolve/main/weights/swinv2_384_best.pt"
+    }
+  },
+  "runtime": {
+    "conf": 0.1,
+    "imgsz": 1280,
+    "yolo_batch": 1,
+    "cls_batch": 8,
+    "max_images": 0,
+    "class_thresholds": "king=0.1,queen=0.7,dead=0.14,not_a_scallop=1.0",
+    "left_xmin": 0,
+    "left_xmax": 1080,
+    "right_xmin": 840,
+    "right_xmax": 1920,
+    "roi_ymin": 0,
+    "roi_ymax": 1080,
+    "merge_iou": 0.45
+  },
+  "video": {
+    "start_sec": 0.0,
+    "seconds": 0.0,
+    "fps_sample": 1.0
+  }
+}

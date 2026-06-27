@@ -1,0 +1,81 @@
+# Experimental FishingROV cascade scaffold for VIAME/KWIVER .pipe integration.
+#
+# This file is provided as a WIP template for DIVE-Web/Desktop integration work.
+# It is NOT guaranteed to run without local process/plugin/model remapping.
+#
+# Expected sibling layout (example):
+# - experimental/with_viame/cascade_teacher_yolo_swin.pipe
+# - experimental/with_viame/models/chungus_1cls_detector.zip
+# - experimental/with_viame/models/swinv2_384_classifier.zip
+
+process input
+  :: video_input
+
+# Split full frame into overlapping left/right crops.
+process crop_left
+  :: image_filter
+  :filter:type = crop_image
+  :filter:crop_image:xmin = 0
+  :filter:crop_image:ymin = 0
+  :filter:crop_image:xmax = 1080
+  :filter:crop_image:ymax = 1080
+
+process crop_right
+  :: image_filter
+  :filter:type = crop_image
+  :filter:crop_image:xmin = 840
+  :filter:crop_image:ymin = 0
+  :filter:crop_image:xmax = 1920
+  :filter:crop_image:ymax = 1080
+
+# Replace detector plugin keys/types as required by your VIAME build.
+process detector_left
+  :: image_object_detector
+  :detector:type = netharn
+  :detector:netharn:deployed = models/chungus_1cls_detector.zip
+
+process detector_right
+  :: image_object_detector
+  :detector:type = netharn
+  :detector:netharn:deployed = models/chungus_1cls_detector.zip
+
+# Shift right detections back to full-frame coordinates.
+process shift_right
+  :: refine_detections
+  :refiner:type = shift_tracks_or_detections
+  :refiner:shift_tracks_or_detections:x_offset = 840
+  :refiner:shift_tracks_or_detections:y_offset = 0
+
+# Merge streams and suppress overlap duplicates.
+process merge_streams
+  :: merge_detection_sets
+
+process nms_filter
+  :: refine_detections
+  :refiner:type = nms_constraints
+  :refiner:nms_constraints:iou_threshold = 0.45
+
+# Optional classifier stage placeholder.
+# Replace with your build-specific classifier process and deployed model package.
+process classify_objects
+  :: refine_detections
+  :refiner:type = classify_object_track
+  :refiner:classify_object_track:deployed = models/swinv2_384_classifier.zip
+
+process writer
+  :: detection_csv_writer
+  :file_name = output_cascade.viame.csv
+
+connect from input.image to crop_left.image
+connect from input.image to crop_right.image
+
+connect from crop_left.image to detector_left.image
+connect from crop_right.image to detector_right.image
+
+connect from detector_right.detected_object_set to shift_right.detected_object_set
+connect from detector_left.detected_object_set to merge_streams.detected_object_set_1
+connect from shift_right.detected_object_set to merge_streams.detected_object_set_2
+
+connect from merge_streams.detected_object_set to nms_filter.detected_object_set
+connect from nms_filter.detected_object_set to classify_objects.detected_object_set
+connect from classify_objects.detected_object_set to writer.detected_object_set
